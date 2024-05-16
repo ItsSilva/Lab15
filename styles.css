@@ -11,17 +11,25 @@ body{
     background-color: white;
 }
 
-.activado label{
+label.activado{
     color: #8d8d8d;
     display: flex;
     align-items: center;
     text-decoration: line-through;
 }
-.desactivado {
+label.desactivado{
     color: #313131;
 }
-
-.check {
+.todos-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#contador{
+    text-align: center;
+    width: 520px;
+}
+.todo-checkbox {
     appearance: none;
     width: 25px;
     height: 25px;
@@ -29,11 +37,11 @@ body{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.check:hover {
+.todo-checkbox:hover {
     background-color: #f4f3f2;
 }
 
-.check:checked{
+.todo-checkbox:checked{
     background-color: #37d7b2;
     background-image: url(./resorces/check.svg);
     background-repeat: no-repeat;
@@ -41,7 +49,7 @@ body{
     background-size: 15px;
 }
 
-#contador{
+.contador{
     text-align: center;
     padding: 10px 20px;
     margin: 10px 10px;
@@ -91,7 +99,7 @@ body{
 }
 
 
-#fieldset00{
+.todo-item{
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
@@ -106,139 +114,4 @@ body{
     width: 500px;
     border: none;
     transition: 0.5s;
-}
-#fieldset01{
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    margin: 10px 10px;
-    background-color: white;
-    border-radius: 25px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    font-size: 14px;
-    color: #333;
-    text-decoration: none;
-    width: 500px;
-    border: none;
-}
-#fieldset02{
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    margin: 10px 10px;
-    background-color: white;
-    border-radius: 25px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    font-size: 14px;
-    color: #333;
-    text-decoration: none;
-    width: 500px;
-    border: none;
-}
-#fieldset03{
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    margin: 10px 10px;
-    background-color: white;
-    border-radius: 25px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    font-size: 14px;
-    color: #333;
-    text-decoration: none;
-    width: 500px;
-    border: none;
-}
-#fieldset04{
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    margin: 10px 10px;
-    background-color: white;
-    border-radius: 25px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    font-size: 14px;
-    color: #333;
-    text-decoration: none;
-    width: 500px;
-    border: none;
-}
-#fieldset05{
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    margin: 10px 10px;
-    background-color: white;
-    border-radius: 25px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    font-size: 14px;
-    color: #333;
-    text-decoration: none;
-    width: 500px;
-    border: none;
-}
-#fieldset06{
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    margin: 10px 10px;
-    background-color: white;
-    border-radius: 25px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    font-size: 14px;
-    color: #333;
-    text-decoration: none;
-    width: 500px;
-    border: none;
-}
-#fieldset07{
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    margin: 10px 10px;
-    background-color: white;
-    border-radius: 25px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    font-size: 14px;
-    color: #333;
-    text-decoration: none;
-    width: 500px;
-    border: none;
-}
-#fieldset08{
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    margin: 10px 10px;
-    background-color: white;
-    border-radius: 25px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    font-size: 14px;
-    color: #333;
-    text-decoration: none;
-    width: 500px;
-    border: none;
-}
-#fieldset09{
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    margin: 10px 10px;
-    background-color: white;
-    border-radius: 25px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    font-size: 14px;
-    color: #333;
-    text-decoration: none;
-    width: 500px;
-    border: none;
 }
