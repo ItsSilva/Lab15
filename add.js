@@ -1,27 +1,31 @@
-const form = document.getElementById('todoForm');
-        const messageDiv = document.getElementById('message');
+// Selecciona el formulario y el elemento div donde se mostrará el mensaje
+const form = document.querySelector('form');
+const messageDiv = document.getElementById('message');
 
-        form.addEventListener('submit', (event) => {
-            event.preventDefault();
+// Agrega un event listener al formulario para escuchar el evento de envío
+form.addEventListener('submit', (event) => {
+  event.preventDefault(); // Evita que la página se recargue
 
-            const todoInput = document.getElementById('todo');
-            const todoText = todoInput.value.trim();
+  // Obtiene el valor del campo de texto
+  const todoInput = document.getElementById('todo');
+  const todoText = todoInput.value.trim();
 
-            if (todoText) {
-                // Guardar el TODO en el localStorage
-                const todos = JSON.parse(localStorage.getItem('todos')) || [];
-                todos.push(todoText);
-                localStorage.setItem('todos', JSON.stringify(todos));
+  // Valida que se haya ingresado un valor
+  if (todoText !== '') {
+    // Guarda el nuevo TODO en el localStorage
+    const todos = JSON.parse(localStorage.getItem('todos')) || [];
+    todos.push(todoText);
+    localStorage.setItem('todos', JSON.stringify(todos));
 
-                // Limpiar el campo de entrada
-                todoInput.value = '';
+    // Muestra un mensaje de éxito
+    messageDiv.textContent = 'TODO guardado correctamente';
+    messageDiv.style.color = 'green';
 
-                // Mostrar el mensaje de confirmación
-                messageDiv.textContent = 'TODO guardado correctamente';
-                messageDiv.style.color = 'green';
-            } else {
-                // Mostrar un mensaje de error si el campo está vacío
-                messageDiv.textContent = 'Por favor, escribe una tarea';
-                messageDiv.style.color = 'red';
-            }
-        });
+    // Limpia el campo de texto
+    todoInput.value = '';
+  } else {
+    // Muestra un mensaje de error
+    messageDiv.textContent = 'Por favor, ingresa una tarea';
+    messageDiv.style.color = 'red';
+  }
+});
