@@ -20,12 +20,15 @@ todos.forEach((todo, index) => {
   checkbox.type = 'checkbox';
   checkbox.classList.add('todo-checkbox');
 
-  if (checkbox.checked) {
-    activados++;
+  // Verificar el estado guardado en el localStorage
+  if (localStorage.getItem(`todo-${index}`) === 'true') {
+    checkbox.checked = true;
     todoLabel.classList.add('activado');
+    activados++;
   } else {
-    desactivados++;
+    checkbox.checked = false;
     todoLabel.classList.add('desactivado');
+    desactivados++;
   }
 
   checkbox.addEventListener('change', () => {
@@ -34,11 +37,13 @@ todos.forEach((todo, index) => {
       todoLabel.classList.add('activado');
       activados++;
       desactivados--;
+      localStorage.setItem(`todo-${index}`, 'true');
     } else {
       todoLabel.classList.remove('activado');
       todoLabel.classList.add('desactivado');
       activados--;
       desactivados++;
+      localStorage.setItem(`todo-${index}`, 'false');
     }
     localStorage.setItem('todos', JSON.stringify(todos));
     contador.innerHTML = "La cantidad de tareas completadas es de " + activados + " y la cantidad de tareas sin completar es de " + desactivados + ".";
