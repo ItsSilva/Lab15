@@ -54,3 +54,8 @@ todos.forEach((todo, index) => {
 
 contador.innerHTML = "La cantidad de tareas completadas es de " + activados + " y la cantidad de tareas sin completar es de " + desactivados + ".";
 
+// Agregar evento de clic al botón "Agregar tarea nueva"
+const botonAgregarTarea = document.querySelector('.button-3');
+botonAgregarTarea.addEventListener('click', () => {
+  window.location.href = './add.html';
+});

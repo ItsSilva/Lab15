@@ -29,3 +29,8 @@ form.addEventListener('submit', (event) => {
     messageDiv.style.color = 'red';
   }
 });
+// Agregar evento de clic al botón "Agregar tarea nueva"
+const botonAgregarTarea = document.querySelector('.button-3');
+botonAgregarTarea.addEventListener('click', () => {
+  window.location.href = './index.html';
+});
