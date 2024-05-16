@@ -18,7 +18,6 @@ todos.forEach((todo, index) => {
 
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
-  checkbox.checked = todo.startsWith('✔️');
   checkbox.classList.add('todo-checkbox');
 
   if (checkbox.checked) {
@@ -33,13 +32,11 @@ todos.forEach((todo, index) => {
     if (checkbox.checked) {
       todoLabel.classList.remove('desactivado');
       todoLabel.classList.add('activado');
-      todos[index] = '✔️ ' + todo;
       activados++;
       desactivados--;
     } else {
       todoLabel.classList.remove('activado');
       todoLabel.classList.add('desactivado');
-      todos[index] = todo.substring(3);
       activados--;
       desactivados++;
     }
