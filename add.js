@@ -4,7 +4,7 @@ const messageDiv = document.getElementById('message');
 
 // Agrega un event listener al formulario para escuchar el evento de envío
 form.addEventListener('submit', (event) => {
-  event.preventDefault(); // Evita que la página se recargue
+  //event.preventDefault(); // Evita que la página se recargue
 
   // Obtiene el valor del campo de texto
   const todoInput = document.getElementById('todo');
