@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
-    <title>Task Manager 2.0</title>
+  <meta charset="UTF-8">
+  <title>Lista de TODOs</title>
+  <link rel="stylesheet" href="./index.css">
 </head>
-
 <body>
-        <!-- Box -->
-        <form class="box style-2">
-            <div id="todos-container"></div>
-            <label id="contador">Marque una de las tareas completadas para ver las restantes.</label>
-        </form>
-        <button class="button-3" role="button">Agregar tarea nueva</button>
-        <!-- Box -->
+    <form id="todo-form">
+        <label id="todo-list"></label>
+        <label id="todo-stats">
+          <span>Tareas completadas: <span id="completed-count">0</span></span>
+          <span>Tareas pendientes: <span id="pending-count">0</span></span>
+        </label>
+      </form>
 </body>
 <footer>
-    <script type="module" src="./index.js"></script>
+<script type="module" src="./index.js"></script>
 </footer>
-
 </html>

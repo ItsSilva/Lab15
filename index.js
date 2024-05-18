@@ -1,63 +1,55 @@
-// Obtener los TODOs del localStorage
-const todos = JSON.parse(localStorage.getItem('todos')) || [];
+import { TodoManager } from './utils.js';
 
-// Seleccionar el contenedor donde se mostrarán los TODOs
-const todosContainer = document.getElementById('todos-container');
-const contador = document.getElementById('contador');
+const todoManager = new TodoManager();
 
-let activados = 0;
-let desactivados = 0;
+function renderTodos() {
+  const todoList = document.getElementById('todo-list');
+  todoList.innerHTML = '';
 
-// Crear un elemento para cada TODO y agregarlo al contenedor
-todos.forEach((todo, index) => {
-  const todoElement = document.createElement('div');
-  todoElement.classList.add('todo-item');
+  let completedCount = 0;
+  let pendingCount = 0;
 
-  const todoLabel = document.createElement('label');
-  todoLabel.textContent = todo;
+  todoManager.getTodos().forEach(todo => {
+    const div = document.createElement('div');
+    div.classList.add('todo-item');
+    div.dataset.todoId = todo.id;
 
-  const checkbox = document.createElement('input');
-  checkbox.type = 'checkbox';
-  checkbox.classList.add('todo-checkbox');
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.checked = todo.completed;
+    input.addEventListener('change', () => {
+      todoManager.toggleTodoCompletion(todo.id);
+      renderTodos();
+    });
 
-  // Verificar el estado guardado en el localStorage
-  if (localStorage.getItem(`todo-${index}`) === 'true') {
-    checkbox.checked = true;
-    todoLabel.classList.add('activado');
-    activados++;
-  } else {
-    checkbox.checked = false;
-    todoLabel.classList.add('desactivado');
-    desactivados++;
-  }
+    const label = document.createElement('label');
+    label.textContent = todo.title;
 
-  checkbox.addEventListener('change', () => {
-    if (checkbox.checked) {
-      todoLabel.classList.remove('desactivado');
-      todoLabel.classList.add('activado');
-      activados++;
-      desactivados--;
-      localStorage.setItem(`todo-${index}`, 'true');
+    div.appendChild(input);
+    div.appendChild(label);
+    todoList.appendChild(div);
+
+    if (todo.completed) {
+      completedCount++;
     } else {
-      todoLabel.classList.remove('activado');
-      todoLabel.classList.add('desactivado');
-      activados--;
-      desactivados++;
-      localStorage.setItem(`todo-${index}`, 'false');
+      pendingCount++;
     }
-    localStorage.setItem('todos', JSON.stringify(todos));
-    contador.innerHTML = "La cantidad de tareas completadas es de " + activados + " y la cantidad de tareas sin completar es de " + desactivados + ".";
   });
 
-  todoElement.appendChild(todoLabel);
-  todoElement.appendChild(checkbox);
-  todosContainer.appendChild(todoElement);
+  document.getElementById('completed-count').textContent = completedCount;
+  document.getElementById('pending-count').textContent = pendingCount;
+}
+
+const form = document.getElementById('todo-form');
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const todoItems = document.querySelectorAll('.todo-item');
+  todoItems.forEach(item => {
+    const checkbox = item.querySelector('input[type="checkbox"]');
+    const todoId = item.dataset.todoId;
+    todoManager.toggleTodoCompletion(parseInt(todoId));
+  });
+  renderTodos();
 });
 
-contador.innerHTML = "La cantidad de tareas completadas es de " + activados + " y la cantidad de tareas sin completar es de " + desactivados + ".";
-
-// Agregar evento de clic al botón "Agregar tarea nueva"
-const botonAgregarTarea = document.querySelector('.button-3');
-botonAgregarTarea.addEventListener('click', () => {
-  window.location.href = './add.html';
-});
+renderTodos();

@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="add.css">
-    <title>Agregar TODO</title>
+  <meta charset="UTF-8">
+  <title>Agregar TODO</title>
+  <link rel="stylesheet" href="./add.css">
 </head>
 <body>
-    <form class="box">
-            <input type="text" name="todo" id="todo" placeholder="Escribe tu tarea">
-            <button class="button-2" type="submit">Agregar</button>
-            <div id="message"></div>
-        </form>
-        <button class="button-3" role="button">Ir a las tareas</button>
+    <form id="add-form">
+        <label for="todo-title">Título del TODO:</label>
+        <input type="text" id="todo-title" name="todo-title" required>
+        <button type="submit">Agregar</button>
+        <p id="message"></p>
+      </form>
 </body>
 <footer>
-    <script type="module" src="./add.js"></script>
+<script type="module" src="./add.js"></script>
 </footer>
 </html>
