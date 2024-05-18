@@ -85,4 +85,11 @@ body {
   button:hover {
     background-color: #0056b3;
   }
+  #add-todo{
+    background-color: #00ff9d;
+  }
+  a{
+    text-decoration: none;
+    color: #000;
+  }
   
